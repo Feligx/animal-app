@@ -1,2 +1,2 @@
-# vr-learning
+# animal-app
 ## Motivación
