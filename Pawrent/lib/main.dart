@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pawrent/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,42 +15,33 @@ class MyApp extends StatelessWidget {
       title: 'Pawrent',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
-      home: const MyHomePage(title: 'Pawrent app'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final usr_field = TextEditingController();
+  final pass_field = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Scaffold(
-      body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Row(children: [
-            IconButton(
-              iconSize: 50.0,
-              icon: const Icon(Icons.chevron_left_outlined),
-              onPressed: () {
-                setState(() {
-                  
-                });
-              },
-            ),
-          ]),
+      body: Container(
+        child: ListView(children: [
           Container(
+            padding: EdgeInsets.all(20.0),
             child: const Image(
               image: NetworkImage(
                   'https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),
@@ -59,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               padding: EdgeInsets.all(20.0),
               child: const Text(
-                "Crea una cuenta",
+                "Iniciar Sesión",
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
             ),
@@ -72,45 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextField(
+                    controller: usr_field,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Nombres',
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Apellidos',
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Correo Electrónico',
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Teléfono',
+                      labelText: 'Username',
                     ),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextField(
+                    controller: pass_field,
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -124,14 +88,48 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(queryData.size.width, 60.0)),
-                    onPressed: () {},
-                    child: const Text('Siguiente'),
+                    onPressed: () async {
+                      var usr = usr_field.text;
+                      var pass = pass_field.text;
+                      print(usr);
+                      print(pass);
+
+                      if (usr != "" && pass != "") {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => register()),
+                        );
+                      }
+                    },
+                    child: const Text('Iniciar Sesión'),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(queryData.size.width, 60.0),
+                        primary: Colors.orange),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => register()),
+                      );
+                    },
+                    child: const Text('Registrarse'),
                   ),
                 ),
               ],
             ),
           ),
         ]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(
+          Icons.report_problem_outlined,
+        ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
