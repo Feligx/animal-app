@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'home/home.dart';
+
 class register extends StatelessWidget {
   const register({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final name_field = TextEditingController();
+    final surname_field = TextEditingController();
+    final email_field = TextEditingController();
+    final tel_field = TextEditingController();
+    final pwd_field = TextEditingController();
+
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Scaffold(
@@ -43,6 +51,7 @@ class register extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextField(
+                    controller: name_field,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Nombres',
@@ -53,6 +62,7 @@ class register extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextField(
+                    controller: surname_field,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Apellidos',
@@ -63,6 +73,8 @@ class register extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextField(
+                    controller: email_field,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Correo Electrónico',
@@ -73,6 +85,9 @@ class register extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextField(
+                    controller: tel_field,
+                    keyboardType: TextInputType.phone,
+                    maxLength: 10,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Teléfono',
@@ -82,6 +97,7 @@ class register extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextField(
+                    controller: pwd_field,
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -95,7 +111,20 @@ class register extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(queryData.size.width, 60.0)),
-                    onPressed: () {},
+                    onPressed: () {
+                      var name = name_field.text;
+                      var surname = surname_field.text;
+                      var pass = pwd_field.text;
+                      var email = email_field.text;
+                      var tel = tel_field.text;
+
+                      if (name != "" && pass != "" && surname != "" && email != "" && tel != "") {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                        );
+                      }
+                    },
                     child: const Text('Siguiente'),
                   ),
                 ),

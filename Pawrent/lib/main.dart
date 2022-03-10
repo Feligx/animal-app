@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pawrent/home/home1.dart';
 import 'package:pawrent/register.dart';
+import 'package:pawrent/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -97,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       if (usr != "" && pass != "") {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => register()),
+                          MaterialPageRoute(builder: (context) => Home1()),
                         );
                       }
                     },
