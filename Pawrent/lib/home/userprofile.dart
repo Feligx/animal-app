@@ -26,8 +26,10 @@ class UserProfile extends StatelessWidget {
           children: [
             Container(
                 margin: EdgeInsets.only(
-                    top: 40.0, left: 40.0, right: 40.0, bottom: 20.0),
+                    top: 40.0, bottom: 20.0),
+                    //top: 40.0, right: 40.0, left:40.0, bottom: 20.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CircleAvatar(
                       backgroundImage: NetworkImage(
@@ -35,7 +37,7 @@ class UserProfile extends StatelessWidget {
                       radius: 70.0,
                     ),
                     Container(
-                        margin: EdgeInsets.only(left: 30.0),
+
                         child: Column(
                           children: [
                             Text(

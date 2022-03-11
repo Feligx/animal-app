@@ -16,8 +16,17 @@ class _Home1State extends State<Home1> {
     });
   }
   static const List<Widget> _widgetOptions = <Widget>[
+    pagvet(),
+    Text(
+      'Index 1: Adopt',
+      style: TextStyle(fontSize: 18),
+    ),
     paghome(),
     pagfun(),
+    Text(
+      'Index 4: Settings',
+      style: TextStyle(fontSize: 18),
+    ),
   ];
 
   @override
@@ -386,8 +395,31 @@ class pagfun extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey[200],
-      child: ListView(
-        children: [
+      child: Column(children:[
+        Container(
+          margin: EdgeInsets.all(10.0),
+            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+            child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Buscar',
+            //icon: Icon(Icons.search),
+            suffixIcon: Icon(Icons.search),
+          ),
+        )),
+        Container(
+          alignment: Alignment.centerLeft,
+          margin: EdgeInsets.only(top: 10.0, left: 20.0),
+          child: Text("Fundaciones en <ins ciudad>", style: TextStyle(fontSize: 15.0),),
+        ),
+        const Divider(
+          height: 20,
+          indent: 20,
+          endIndent: 20,
+          color: Colors.black,
+        ),
+        Expanded(
+          child: ListView(children: [
           Container(
             margin: EdgeInsets.only(left: 10.0, right: 10.0),
             padding: EdgeInsets.all(10.0),
@@ -398,7 +430,7 @@ class pagfun extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(right: 100.0),
                     child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
+                      children: [Text("News"), Text("Lorem Ipsum")],
                     ),
                   ),
                   Container(
@@ -666,8 +698,181 @@ class pagfun extends StatelessWidget {
           ),
 
         ],
+      ),
+        )]
       )
     );
   }
 }
+
+class pagvet extends StatelessWidget {
+  const pagvet({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.grey[200],
+        child: Column(children:[
+          Container(
+              margin: EdgeInsets.all(10.0),
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Buscar',
+                  //icon: Icon(Icons.search),
+                  suffixIcon: Icon(Icons.search),
+                ),
+              )),
+          Container(
+            alignment: Alignment.centerLeft,
+            margin: EdgeInsets.only(top: 10.0, left: 20.0),
+            child: Text("Veterinarios en <ins ciudad>", style: TextStyle(fontSize: 15.0),),
+          ),
+          const Divider(
+            height: 20,
+            indent: 20,
+            endIndent: 20,
+            color: Colors.black,
+          ),
+          Expanded(
+            child: ListView(children: [
+              Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0),
+//                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage: NetworkImage(
+                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                    Container(
+                      child: Column(
+                        children: [Text("Vet 1"), Text("tel. 123456789")],
+                      ),
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.chevron_right_outlined),
+                        onPressed: () {
+                          print("hola");
+                        },
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0),
+//                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage: NetworkImage(
+                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                    Container(
+                      child: Column(
+                        children: [Text("Vet 1"), Text("tel. 123456789")],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.chevron_right_outlined),
+                      onPressed: () {
+                        print("hola");
+                      },
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0),
+//                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage: NetworkImage(
+                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                    Container(
+                      child: Column(
+                        children: [Text("Vet 1"), Text("tel. 123456789")],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.chevron_right_outlined),
+                      onPressed: () {
+                        print("hola");
+                      },
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0),
+//                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage: NetworkImage(
+                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                    Container(
+                      child: Column(
+                        children: [Text("Vet 1"), Text("tel. 123456789")],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.chevron_right_outlined),
+                      onPressed: () {
+                        print("hola");
+                      },
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0),
+//                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: CircleAvatar(
+                            radius: 50.0,
+                            backgroundImage: NetworkImage(
+                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                    Container(
+                      child: Column(
+                        children: [Text("Vet 1"), Text("tel. 123456789")],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.chevron_right_outlined),
+                      onPressed: () {
+                        print("hola");
+                      },
+                    )
+                  ],
+                ),
+              ),
+            ],
+            ),
+          )]
+        )
+    );
+  }
+}
+
 
