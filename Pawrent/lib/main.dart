@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pawrent/home/home1.dart';
 import 'package:pawrent/register.dart';
 import 'package:pawrent/home/home.dart';
+import 'package:pawrent/themes/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pawrent',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
+      themeMode: ThemeMode.system,
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
       home: const MyHomePage(),
     );
   }
@@ -32,21 +33,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   final usr_field = TextEditingController();
   final pass_field = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
+    bool isDark = queryData.platformBrightness == Brightness.dark;
     return Scaffold(
+      //backgroundColor: Colors.white,
       body: Container(
         child: ListView(children: [
           Container(
             padding: EdgeInsets.all(20.0),
-            child: const Image(
-              image: NetworkImage(
-                  'https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),
+            child: Image.asset((isDark) ? 'assets/logo_dark.png' : 'assets/logo_light.png',
+                scale: (queryData.size.width-40)/30
+              //NetworkImage('https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),            ),
             ),
           ),
           Row(children: [
@@ -68,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TextField(
                     controller: usr_field,
                     decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
                       labelText: 'Username',
                     ),
                   ),
@@ -128,7 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          print(queryData.size.width);
+          print(queryData.size.width-40);
+          print((queryData.size.width-40)/30);
+          },
         child: const Icon(
           Icons.report_problem_outlined,
         ),

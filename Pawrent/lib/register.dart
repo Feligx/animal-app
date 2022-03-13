@@ -15,7 +15,9 @@ class register extends StatelessWidget {
 
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
+    bool isDark = queryData.platformBrightness == Brightness.dark;
     return Scaffold(
+      //backgroundColor: Colors.white,
       body: Center(
         child: ListView(children: [
           Row(children: [
@@ -29,9 +31,8 @@ class register extends StatelessWidget {
           ]),
           Container(
             height: queryData.size.height * 0.1,
-            child: const Image(
-              image: NetworkImage(
-                  'https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),
+            child: Image.asset((isDark) ? 'assets/logo_dark.png' : 'assets/logo_light.png',
+              //NetworkImage('https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),            ),
             ),
           ),
           Center(
@@ -45,7 +46,7 @@ class register extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.indigo),
+                          color: (isDark)?Colors.white : Colors.indigo),
                     )),
                 Container(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),

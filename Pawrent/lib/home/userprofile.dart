@@ -8,7 +8,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(
             Icons.chevron_left_outlined,
@@ -21,7 +21,7 @@ class UserProfile extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.grey[200],
+        //color: Colors.grey[200],
         child: Column(
           children: [
             Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/userprofile.dart';
+import 'package:pawrent/adopt/adopt.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class Home1 extends StatefulWidget {
 }
 
 class _Home1State extends State<Home1> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -17,10 +18,7 @@ class _Home1State extends State<Home1> {
   }
   static const List<Widget> _widgetOptions = <Widget>[
     pagvet(),
-    Text(
-      'Index 1: Adopt',
-      style: TextStyle(fontSize: 18),
-    ),
+    pagadopt(),
     paghome(),
     pagfun(),
     Text(
@@ -31,12 +29,14 @@ class _Home1State extends State<Home1> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
+    bool isDark = queryData.platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         leadingWidth: 80,
-        titleTextStyle: TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+//        titleTextStyle: TextStyle(
+//            fontWeight: FontWeight.bold, fontSize: 18),
         title: Text("Camilo Fernandez"),
         leading: IconButton(
           icon: CircleAvatar(
@@ -66,30 +66,34 @@ class _Home1State extends State<Home1> {
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_hospital_outlined, color: Colors.indigo),
+            icon: Icon(Icons.local_hospital_outlined,),
             label: 'Veterinaria',
+            backgroundColor: (isDark)?Colors.black : null,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pets, color: Colors.indigo),
+            icon: Icon(Icons.pets),
             label: 'Adoptar',
+            backgroundColor: (isDark)?Colors.black : null,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.indigo),
+            icon: Icon(Icons.home),
             label: 'Home',
+            backgroundColor: (isDark)?Colors.black : null,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.volunteer_activism_outlined, color: Colors.indigo),
+            icon: Icon(Icons.volunteer_activism_outlined),
             label: 'Fundaciones',
+            backgroundColor: (isDark)?Colors.black : null,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings, color: Colors.indigo),
+            icon: Icon(Icons.settings),
             label: 'Configuración',
+            backgroundColor: (isDark)?Colors.black : null,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.indigo,
         onTap: _onItemTapped,
       ),
     );
@@ -102,7 +106,7 @@ class paghome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
+      //color: Colors.grey[200],
       child: ListView(
         children: [
           Container(
@@ -110,10 +114,33 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
+                    child: Column(
+                      children: [Text("Novedades", style: TextStyle(color: Colors.black)), Text("Lorem Ipsum")],
+                    ),
+                  ),
+                  Container(
+                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      child: Image(
+                          image: NetworkImage(
+                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              scale: 2.5)))
+                ],
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 10.0, right: 10.0),
+            padding: EdgeInsets.all(10.0),
+            child: Card(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -133,10 +160,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -156,10 +183,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -179,10 +206,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -202,10 +229,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -225,10 +252,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -248,10 +275,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -271,10 +298,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -294,10 +321,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -317,10 +344,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -340,10 +367,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -363,10 +390,10 @@ class paghome extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -394,7 +421,7 @@ class pagfun extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
+      //color: Colors.grey[200],
       child: Column(children:[
         Container(
           margin: EdgeInsets.all(10.0),
@@ -425,10 +452,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("News"), Text("Lorem Ipsum")],
                     ),
@@ -448,10 +475,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -471,10 +498,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -494,10 +521,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -517,10 +544,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -540,10 +567,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -563,10 +590,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -586,10 +613,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -609,10 +636,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -632,10 +659,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -655,10 +682,10 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
                       children: [Text("Novedades"), Text("Lorem Ipsum")],
                     ),
@@ -678,12 +705,12 @@ class pagfun extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 100.0),
+                    //margin: EdgeInsets.only(right: 100.0),
                     child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
+                      children: [Text("Novedade"), Text("Lorem Ipsum")],
                     ),
                   ),
                   Container(
@@ -711,7 +738,7 @@ class pagvet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.grey[200],
+        //color: Colors.grey[200],
         child: Column(children:[
           Container(
               margin: EdgeInsets.all(10.0),
