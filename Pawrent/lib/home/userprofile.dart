@@ -12,7 +12,7 @@ class UserProfile extends StatelessWidget {
         leading: IconButton(
           icon: Icon(
             Icons.chevron_left_outlined,
-            color: Colors.black,
+            //color: Colors.black,
             size: 30,
           ),
           onPressed: () {
@@ -371,7 +371,7 @@ class UserProfile extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: MyStatefulWidget(),
+
     );
   }
 }

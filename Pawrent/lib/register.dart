@@ -22,7 +22,7 @@ class register extends StatelessWidget {
         child: ListView(children: [
           Row(children: [
             IconButton(
-              iconSize: 30.0,
+              iconSize: 40.0,
               icon: const Icon(Icons.chevron_left_outlined),
               onPressed: () {
                 Navigator.pop(context);
