@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(children: [
           Container(
             padding: EdgeInsets.all(20.0),
-            child: Image.asset((isDark) ? 'assets/logo_dark.png' : 'assets/logo_light.png',
+            child: Image.asset((isDark) ? 'assets/logo_white_login.png' : 'assets/logo_light.png',
                 scale: (queryData.size.width-40)/30
               //NetworkImage('https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),            ),
             ),

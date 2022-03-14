@@ -9,6 +9,8 @@ class Themes{
         borderSide: BorderSide(color: Colors.white),
       ),
       labelStyle: TextStyle(color: Colors.white),
+      suffixStyle: TextStyle(color: Colors.white),
+
     ),
     primarySwatch: Colors.indigo,
     backgroundColor: Colors.black,
@@ -131,6 +133,10 @@ class Themes{
 
     //for appBar
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Colors.indigo,
+      ),
+
       titleTextStyle: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
@@ -145,6 +151,11 @@ class Themes{
       backgroundColor: Colors.white,
       selectedItemColor: Colors.indigo,
       unselectedItemColor: Colors.indigo,
+    ),
+
+    //for icons
+    iconTheme: IconThemeData(
+      color: Colors.indigo,
     ),
   );
 }

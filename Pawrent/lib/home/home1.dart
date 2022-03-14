@@ -59,7 +59,7 @@ class _Home1State extends State<Home1> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.report_problem_outlined,
-                    color: Colors.indigo,
+                    //color: Colors.indigo,
                     size: 30,
                   )))
         ],
@@ -420,6 +420,8 @@ class pagfun extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
+    bool isDark = queryData.platformBrightness == Brightness.dark;
     return Container(
       //color: Colors.grey[200],
       child: Column(children:[
@@ -431,7 +433,7 @@ class pagfun extends StatelessWidget {
             border: OutlineInputBorder(),
             labelText: 'Buscar',
             //icon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.search),
+            suffixIcon: Icon(Icons.search, color: (isDark) ? Colors.white : Colors.black,),
           ),
         )),
         Container(
@@ -737,6 +739,8 @@ class pagvet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
+    bool isDark = queryData.platformBrightness == Brightness.dark;
     return Container(
         //color: Colors.grey[200],
         child: Column(children:[
@@ -748,7 +752,7 @@ class pagvet extends StatelessWidget {
                   border: OutlineInputBorder(),
                   labelText: 'Buscar',
                   //icon: Icon(Icons.search),
-                  suffixIcon: Icon(Icons.search),
+                  suffixIcon: Icon(Icons.search, color:(isDark)?Colors.white:Colors.black),
                 ),
               )),
           Container(
