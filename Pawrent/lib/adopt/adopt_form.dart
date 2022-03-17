@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pawrent/adopt/adopt_match.dart';
 
 class adoptForm extends StatefulWidget {
   const adoptForm({Key? key}) : super(key: key);
@@ -240,9 +241,9 @@ class _adoptFormState extends State<adoptForm> {
                     ]),
               ),
               Container(
-                margin: EdgeInsets.only(top:20.0, left:20.0, right:20.0),
+                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
                 child: DropdownButtonFormField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
                     value: selctedvalue,
@@ -251,7 +252,7 @@ class _adoptFormState extends State<adoptForm> {
                         selctedvalue = newValue!;
                       });
                     },
-                    items: [
+                    items: const [
                       DropdownMenuItem(child: Text("USA"), value: "USA"),
                       DropdownMenuItem(child: Text("Canada"), value: "Canada"),
                       DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
@@ -259,9 +260,9 @@ class _adoptFormState extends State<adoptForm> {
                     ]),
               ),
               Container(
-                margin: EdgeInsets.only(top:20.0, left:20.0, right:20.0),
+                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
                 child: DropdownButtonFormField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
                     value: selctedvalue,
@@ -270,7 +271,7 @@ class _adoptFormState extends State<adoptForm> {
                         selctedvalue = newValue!;
                       });
                     },
-                    items: [
+                    items: const [
                       DropdownMenuItem(child: Text("USA"), value: "USA"),
                       DropdownMenuItem(child: Text("Canada"), value: "Canada"),
                       DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
@@ -278,9 +279,9 @@ class _adoptFormState extends State<adoptForm> {
                     ]),
               ),
               Container(
-                margin: EdgeInsets.only(top:20.0, left:20.0, right:20.0),
+                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
                 child: DropdownButtonFormField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
                     value: selctedvalue,
@@ -289,7 +290,7 @@ class _adoptFormState extends State<adoptForm> {
                         selctedvalue = newValue!;
                       });
                     },
-                    items: [
+                    items: const [
                       DropdownMenuItem(child: Text("USA"), value: "USA"),
                       DropdownMenuItem(child: Text("Canada"), value: "Canada"),
                       DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
@@ -297,9 +298,9 @@ class _adoptFormState extends State<adoptForm> {
                     ]),
               ),
               Container(
-                margin: EdgeInsets.only(top:20.0, left:20.0, right:20.0),
+                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
                 child: DropdownButtonFormField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
                     value: selctedvalue,
@@ -308,7 +309,7 @@ class _adoptFormState extends State<adoptForm> {
                         selctedvalue = newValue!;
                       });
                     },
-                    items: [
+                    items: const [
                       DropdownMenuItem(child: Text("USA"), value: "USA"),
                       DropdownMenuItem(child: Text("Canada"), value: "Canada"),
                       DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
@@ -316,9 +317,9 @@ class _adoptFormState extends State<adoptForm> {
                     ]),
               ),
               Container(
-                margin: EdgeInsets.only(top:20.0, left:20.0, right:20.0),
+                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
                 child: DropdownButtonFormField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
                     value: selctedvalue,
@@ -327,7 +328,7 @@ class _adoptFormState extends State<adoptForm> {
                         selctedvalue = newValue!;
                       });
                     },
-                    items: [
+                    items: const [
                       DropdownMenuItem(child: Text("USA"), value: "USA"),
                       DropdownMenuItem(child: Text("Canada"), value: "Canada"),
                       DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
@@ -335,19 +336,23 @@ class _adoptFormState extends State<adoptForm> {
                     ]),
               ),
               Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(queryData.size.width, 60.0),
                         ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => adpotMatch()),
+                    );
+                  },
                   child: const Text('Continuar'),
                 ),
               )
             ],
           )
           )
-
         ],
       ),
     ));

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/userprofile.dart';
 import 'package:pawrent/adopt/adopt.dart';
+import 'package:pawrent/settings/settings.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -21,10 +22,7 @@ class _Home1State extends State<Home1> {
     pagadopt(),
     paghome(),
     pagfun(),
-    Text(
-      'Index 4: Settings',
-      style: TextStyle(fontSize: 18),
-    ),
+    settingList(),
   ];
 
   @override

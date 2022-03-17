@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pawrent/adopt/adopt_form.dart';
 
+import 'adopt_match.dart';
+
 class pagadopt extends StatelessWidget {
   const pagadopt({Key? key}) : super(key: key);
 
@@ -30,7 +32,12 @@ class pagadopt extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => adpotMatch()),
+                    );
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     width: queryData.size.width*0.3,
