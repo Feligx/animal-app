@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/home1.dart';
 import 'package:pawrent/register.dart';
@@ -33,110 +34,154 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final usr_field = TextEditingController();
   final pass_field = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
     return Scaffold(
       //backgroundColor: Colors.white,
-      body: Container(
-        child: ListView(children: [
-          Container(
-            padding: EdgeInsets.all(20.0),
-            child: Image.asset((isDark) ? 'assets/logo_white_login.png' : 'assets/logo_light.png',
-                scale: (queryData.size.width-40)/30
-              //NetworkImage('https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),            ),
+      body: ListView(children: [
+        Image.asset(
+            (isDark) ? 'assets/logo_white_login.png' : 'assets/logo_light.png',
+            scale: (queryData.size.width - 40) / 30
+            //NetworkImage('https://raw.githubusercontent.com/Feligx/animal-app/main/pawrent_logo-removebg.png'),            ),
             ),
-          ),
-          Row(children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
             Container(
-              padding: EdgeInsets.all(20.0),
+              width: queryData.size.width,
+              padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
               child: const Text(
                 "Iniciar Sesión",
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
             ),
-          ]),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  child: TextField(
-                    controller: usr_field,
-                    decoration: const InputDecoration(
-                      labelText: 'Username',
-                    ),
-                  ),
+            Container(
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: EdgeInsets.only(bottom: 20.0),
+              child: TextField(
+                controller: usr_field,
+                decoration: const InputDecoration(
+                  labelText: 'Username',
                 ),
-                Container(
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: TextField(
-                    controller: pass_field,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: Size(queryData.size.width, 60.0)),
-                    onPressed: () async {
-                      var usr = usr_field.text;
-                      var pass = pass_field.text;
-                      print(usr);
-                      print(pass);
-
-                      if (usr != "" && pass != "") {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Home1()),
-                        );
-                      }
-                    },
-                    child: const Text('Iniciar Sesión'),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: Size(queryData.size.width, 60.0),
-                        primary: Colors.orange),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => register()),
-                      );
-                    },
-                    child: const Text('Registrarse'),
-                  ),
-                ),
-              ],
+              ),
             ),
+            Container(
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              child: TextField(
+                controller: pass_field,
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20.0),
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    minimumSize: Size(queryData.size.width, 50.0)),
+                onPressed: () async {
+                  var usr = usr_field.text;
+                  var pass = pass_field.text;
+                  print(usr);
+                  print(pass);
+
+                  if (usr != "" && pass != "") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home1()),
+                    );
+                  }
+                },
+                child: const Text('Iniciar Sesión'),
+              ),
+            ),
+
+          ],
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 30.0),
+          child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              padding: EdgeInsets.all(10.0),
+              shape: CircleBorder()
+            ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home1()));
+              },
+              child: Image.asset('assets/icons/google.png', height: 30,)
+          ),
+          OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.all(10.0),
+                  shape: CircleBorder()
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home1()));
+              },
+              child: Image.asset('assets/icons/apple.png', height: 30,)
+          ),
+          OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.all(10.0),
+                  shape: CircleBorder()
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home1()));
+              },
+              child: Image.asset('assets/icons/facebook.png', height: 30,)
           ),
         ]),
-      ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 20.0),
+            child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                child: TextButton(
+                  child: Text('¿Olvidaste tu contraseña?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15.0),),
+                  onPressed: (){}
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                child: TextButton(
+                  child: Text('¿No tienes una cuenta?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15.0),),
+                  onPressed: (){}
+                ),
+              ),
+            ),
+          ],
+        ))
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print(queryData.size.width);
-          print(queryData.size.width-40);
-          print((queryData.size.width-40)/30);
-          },
+          print(queryData.size.width - 40);
+          print((queryData.size.width - 40) / 30);
+        },
         child: const Icon(
           Icons.report_problem_outlined,
         ),
