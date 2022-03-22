@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "350594135123",
+    "project_id": "pawpaw-9d57b",
+    "storage_bucket": "pawpaw-9d57b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350594135123:android:f688a9334c1ca051e642a6",
+        "android_client_info": {
+          "package_name": "com.pawrent.pawrent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350594135123-s7k4eoe9qijvvehv7o1fid5oh7500u8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ThQkoOr95OVcuO5P1nEyrzhM-K_5CVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350594135123-s7k4eoe9qijvvehv7o1fid5oh7500u8b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "350594135123-ndfc3ur3kng225qofqj810jd2bgr0siu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pawrent.pawrent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

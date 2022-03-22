@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home.dart';
@@ -112,18 +113,26 @@ class register extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(queryData.size.width, 60.0)),
-                    onPressed: () {
-                      var name = name_field.text;
-                      var surname = surname_field.text;
+                    onPressed: () async {
+                      //var name = name_field.text;
+                      //var surname = surname_field.text;
                       var pass = pwd_field.text;
                       var email = email_field.text;
-                      var tel = tel_field.text;
+                      //var tel = tel_field.text;
 
-                      if (name != "" && pass != "" && surname != "" && email != "" && tel != "") {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Home()),
+                      try {
+                        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                            email: email,
+                            password: pass
                         );
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'weak-password') {
+                          print('The password provided is too weak.');
+                        } else if (e.code == 'email-already-in-use') {
+                          print('The account already exists for that email.');
+                        }
+                      } catch (e) {
+                        print(e);
                       }
                     },
                     child: const Text('Siguiente'),

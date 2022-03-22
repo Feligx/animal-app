@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/home1.dart';
@@ -5,8 +7,37 @@ import 'package:pawrent/register.dart';
 import 'package:pawrent/home/home.dart';
 import 'package:pawrent/themes/themes.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'auth/googleAuth.dart';
+import 'firebase_options.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseAuth.instance
+      .userChanges()
+      .listen((User? user) {
+    //user is not logged in
+    if (user == null) {
+      runApp(const MyApp());
+    }
+    //user is logged in
+    else {
+      runApp(
+          MaterialApp(
+            title: 'Pawrent',
+            debugShowCheckedModeBanner: false,
+            themeMode: ThemeMode.system,
+            theme: Themes.lightTheme,
+            darkTheme: Themes.darkTheme,
+            home: Home1(),
+          )
+      );
+    }
+  });
+  //runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -94,11 +125,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   print(usr);
                   print(pass);
 
-                  if (usr != "" && pass != "") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home1()),
+                  try {
+                    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: usr,
+                        password: pass
                     );
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'user-not-found') {
+                      print('No user found for that email.');
+                    } else if (e.code == 'wrong-password') {
+                      print('Wrong password provided for that user.');
+                    }
                   }
                 },
                 child: const Text('Iniciar Sesión'),
@@ -117,9 +154,8 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(10.0),
               shape: CircleBorder()
             ),
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home1()));
+              onPressed: () async{
+                signInWithGoogle();
               },
               child: Image.asset('assets/icons/google.png', height: 30,)
           ),
@@ -169,7 +205,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text('¿No tienes una cuenta?',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 15.0),),
-                  onPressed: (){}
+                  onPressed: (){
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => register()));
+                  }
                 ),
               ),
             ),

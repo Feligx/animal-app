@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/themes/themes.dart';
 
@@ -108,7 +109,9 @@ class settingList extends StatelessWidget {
                   ],
                 )),),
           InkWell(
-            onTap: (){},
+            onTap: () async{
+              await FirebaseAuth.instance.signOut();
+            },
             child: Container(
                 margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 padding: EdgeInsets.only(left: queryData.size.width*0.05, right: queryData.size.width*0.05),
@@ -127,12 +130,12 @@ class settingList extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              child: Text("Configura tus dispositivos", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                              child: Text("Log-out", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                               width: queryData.size.width,
                             ),
                             Container(
                                 child: Text(
-                                  "Consulta y modifica las configuraciones de tus dispositivos emparejados.",
+                                  "Desloguearse de la aplicación.",
                                   textAlign: TextAlign.left,
                                 ))
                           ],
