@@ -1,5 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pawrent/home/userprofile.dart';
+import 'package:pawrent/home/profile/userprofile.dart';
 import 'package:pawrent/adopt/adopt.dart';
 import 'package:pawrent/settings/settings.dart';
 
@@ -12,6 +13,7 @@ class Home1 extends StatefulWidget {
 
 class _Home1State extends State<Home1> {
   int _selectedIndex = 2;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -29,17 +31,37 @@ class _Home1State extends State<Home1> {
   Widget build(BuildContext context) {
     MediaQueryData queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid, provider, photoUrl="", displayName = "";
+
+    void getCurrentUserInfo() async {
+      debugPrint(auth.currentUser?.uid);
+      uid=auth.currentUser!.uid;
+      provider=auth.currentUser!.providerData[0].providerId.toString();
+
+      if(provider == "password"){
+        photoUrl = "https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
+        displayName = "Kirby";
+      }else{
+        photoUrl=auth.currentUser!.photoURL!;
+        displayName=auth.currentUser!.displayName!;
+      }
+    }
+
+    getCurrentUserInfo();
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: Colors.white,
         leadingWidth: 80,
 //        titleTextStyle: TextStyle(
 //            fontWeight: FontWeight.bold, fontSize: 18),
-        title: Text("Camilo Fernandez"),
+        title: Text(displayName),
         leading: IconButton(
           icon: CircleAvatar(
             backgroundImage: NetworkImage(
-                "https://avatars.githubusercontent.com/u/34454204?v=4"),
+                //"https://avatars.githubusercontent.com/u/34454204?v=4"
+                photoUrl,
+            ),
             radius: 30.0,
           ),
           onPressed: () {
@@ -54,7 +76,13 @@ class _Home1State extends State<Home1> {
           Container(
               margin: EdgeInsets.only(right: 10.0),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    debugPrint(auth.currentUser?.uid);
+                    debugPrint(auth.currentUser?.photoURL);
+                    debugPrint(auth.currentUser?.displayName);
+                    debugPrint(auth.currentUser?.providerData[0].toString());
+                    debugPrint(auth.currentUser?.providerData[0].providerId.toString());
+                  },
                   icon: Icon(
                     Icons.report_problem_outlined,
                     //color: Colors.indigo,

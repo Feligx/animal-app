@@ -7,6 +7,7 @@ import 'package:pawrent/register.dart';
 import 'package:pawrent/home/home.dart';
 import 'package:pawrent/themes/themes.dart';
 
+import 'acc_type_selection.dart';
 import 'auth/googleAuth.dart';
 import 'firebase_options.dart';
 
@@ -207,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontSize: 15.0),),
                   onPressed: (){
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => register()));
+                        context, MaterialPageRoute(builder: (context) => accType()));
                   }
                 ),
               ),

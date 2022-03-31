@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'home/home.dart';
 
 class register extends StatelessWidget {
-  const register({Key? key}) : super(key: key);
+  final String accType="user";
+  const register({Key? key, required accType}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +20,9 @@ class register extends StatelessWidget {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
+
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
     return Scaffold(
       //backgroundColor: Colors.white,
       body: Center(
@@ -114,17 +120,20 @@ class register extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(queryData.size.width, 60.0)),
                     onPressed: () async {
-                      //var name = name_field.text;
-                      //var surname = surname_field.text;
+                      var name = name_field.text;
+                      var surname = surname_field.text;
                       var pass = pwd_field.text;
                       var email = email_field.text;
-                      //var tel = tel_field.text;
+                      var tel = tel_field.text;
 
                       try {
                         UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                             email: email,
                             password: pass
                         );
+                        debugPrint("hi!");
+                        CollectionReference users = FirebaseFirestore.instance.collection('users');
+                        users.add({'nombre': name+" "+surname, 'email':email, 'pwd':pass, 'tel':tel, 'type':accType});
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           print('The password provided is too weak.');

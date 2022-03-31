@@ -1,11 +1,28 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/home.dart';
+import 'package:pawrent/home/profile/edit_regular.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid, provider, photoUrl="", displayName = "";
+
+    debugPrint(auth.currentUser?.uid);
+    uid=auth.currentUser!.uid;
+    provider=auth.currentUser!.providerData[0].providerId.toString();
+
+    if(provider == "password"){
+      photoUrl = "https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
+      displayName = "Kirby";
+    }else{
+      photoUrl=auth.currentUser!.photoURL!;
+      displayName=auth.currentUser!.displayName!;
+    }
+
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: Colors.white,
@@ -33,19 +50,24 @@ class UserProfile extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundImage: NetworkImage(
-                          "https://avatars.githubusercontent.com/u/34454204?v=4"),
+                          photoUrl
+                      ),
                       radius: 70.0,
                     ),
                     Container(
 
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              "Felipe Martinez",
-                              style: TextStyle(
-                                  color: Colors.orange,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                            Container(
+
+                              child: Text(
+                                displayName,
+                                style: TextStyle(
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                                ),
                             ),
                             Text(
                               "Retirando la vida :)",
@@ -58,11 +80,17 @@ class UserProfile extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(right: 20.0),
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => editRegularUser()));
+                    },
                     child: Text(
                       "Editar Perfil",
                       style: TextStyle(color: Colors.black, fontSize: 13.0),
-                    )),
+                    ),
+                ),
               )
             ]),
             const Divider(
