@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../themes/themes.dart';
 
 class editRegularUser extends StatefulWidget {
   const editRegularUser({Key? key}) : super(key: key);
@@ -14,12 +15,14 @@ class _editRegularUserState extends State<editRegularUser> {
   Widget build(BuildContext context) {
 
     FirebaseAuth auth = FirebaseAuth.instance;
-    String uid, provider, photoUrl="", displayName = "";
+    String uid, provider, photoUrl="", displayName = "", email = "";
 
     void getCurrentUserInfo() async {
       debugPrint(auth.currentUser?.uid);
+      debugPrint(auth.currentUser?.email.toString());
       uid=auth.currentUser!.uid;
       provider=auth.currentUser!.providerData[0].providerId.toString();
+      email=auth.currentUser!.email.toString();
 
       if(provider == "password"){
         photoUrl = "https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
@@ -57,9 +60,10 @@ class _editRegularUserState extends State<editRegularUser> {
       Column(
     children: [
         Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Stack(
+          InkWell(
+            child: Stack(
             alignment: Alignment.center,
             children: [
               Container(
@@ -68,7 +72,6 @@ class _editRegularUserState extends State<editRegularUser> {
                   color: Color(0x76484848),
                 ),
                 child: CircleAvatar(
-
                   backgroundImage: NetworkImage(
                       photoUrl
                   ),
@@ -83,25 +86,85 @@ class _editRegularUserState extends State<editRegularUser> {
             ],
 
           ),
-
-          Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+            onTap: (){
+              print("Edit Profile");
+            },
+          ),
+        ],
+      ),
+      Container(
+        margin: EdgeInsets.only(top:20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                child: Text(
+                  displayName,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child:Row(
                 children: [
                   Container(
+                    width: MediaQuery.of(context).size.width/2,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Column(
+                      children: [
+                      Text(
+                        "Email:",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText: email,
+                            hintText: "Change your email",
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                    ]
+                    )
+                  ),
+                  Container(
+                      width: MediaQuery.of(context).size.width/2,
+                      margin: EdgeInsets.only(top: 10),
+                      child: Column(
+                          children: [
+                            Text(
+                              "Phone:",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextField(
+                              decoration: InputDecoration(
+                                labelText: "",
+                                hintText: "Change your email",
+                                hintStyle: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
 
-                    child: Text(
-                      displayName,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.orange,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
+
+                          ]
+                      )
                   ),
                 ],
               ))
-        ],
+            ],
+          )),
+      TextField(
+        
       )
     ],
     ))

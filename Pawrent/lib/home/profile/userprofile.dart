@@ -70,7 +70,8 @@ class UserProfile extends StatelessWidget {
                                 ),
                             ),
                             Text(
-                              "Retirando la vida :)",
+                              //"Retirando la vida :)",
+                              "Minando ando ;)"
                             )
                           ],
                         ))
@@ -138,7 +139,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(
@@ -176,7 +177,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(
@@ -214,7 +215,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(
@@ -252,7 +253,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(
@@ -290,7 +291,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(
@@ -328,7 +329,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(
@@ -366,7 +367,7 @@ class UserProfile extends StatelessWidget {
                               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                               child: Image(
                                   image: NetworkImage(
-                                      "https://avatars.githubusercontent.com/u/34454204?v=4",
+                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
                                       scale: 2.5))),
                           Container(
                             child: Column(

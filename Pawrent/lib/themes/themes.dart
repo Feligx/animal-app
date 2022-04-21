@@ -124,8 +124,6 @@ class Themes{
 
     //for textField
     inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(
-      ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.indigo),
       ),

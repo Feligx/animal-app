@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/home1.dart';
 import 'package:pawrent/register.dart';
@@ -99,6 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextField(
                 controller: usr_field,
                 decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                  ),
                   labelText: 'Username',
                 ),
               ),

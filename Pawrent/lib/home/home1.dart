@@ -136,6 +136,112 @@ class paghome extends StatelessWidget {
       child: ListView(
         children: [
           Container(
+            margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  "Últimos reportes",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+
+                  },
+                  child: Text(
+                    "Ver todos",
+                    style: TextStyle(color: Colors.orange),
+                  ),
+                ),
+              ],
+            )
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  width:50,
+                  height:50,
+                  child: Icon(Icons.location_pin, size: 25, color: Color(0xFFEB5050)),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFF2DBDB)),
+                ),
+                Column(
+                  children:[
+                    Text("Mascota reportada Bogotá"),
+                    Text("Sep 18, 2020"),
+                  ]
+                ),
+                Text("Hace 1h", style: TextStyle(color: Color(0xFFEB5050)),),
+              ],
+            )
+          ),
+          const Divider(
+            height: 20,
+            indent: 20,
+            endIndent: 20,
+          ),
+          Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width:50,
+                    height:50,
+                    child: Icon(Icons.location_pin, size: 25, color: Color(0xFF29AB67)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFCFEDDD)),
+                  ),
+                  Column(
+                      children:[
+                        Text("Mascota perdida - Bogotá"),
+                        Text("Sep 15, 2021"),
+                      ]
+                  ),
+                  Text("Hace 3h", style: TextStyle(color: Color(0xFF29AB67)),),
+                ],
+              )
+          ),
+          const Divider(
+            height: 20,
+            indent: 20,
+            endIndent: 20,
+          ),
+          Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width:50,
+                    height:50,
+                    child: Icon(Icons.location_pin, size: 25, color: Color(0xFF405AE1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFD8DCF0)),
+                  ),
+                  Column(
+                      children:[
+                        Text("Mascota encontrada Bogotá"),
+                        Text("Sep 12, 2022"),
+                      ]
+                  ),
+                  Text("Hace 2d", style: TextStyle(color: Color(0xFF405AE1)),),
+                ],
+              )
+          ),
+          const Divider(
+            height: 20,
+            indent: 20,
+            endIndent: 20,
+          ),
+
+          Container(
             margin: EdgeInsets.only(left: 10.0, right: 10.0),
             padding: EdgeInsets.all(10.0),
             child: Card(
@@ -152,7 +258,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -175,7 +281,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -198,7 +304,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -221,7 +327,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -244,7 +350,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -267,7 +373,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -290,7 +396,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -313,7 +419,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -336,7 +442,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -359,7 +465,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -382,7 +488,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -405,7 +511,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -428,7 +534,7 @@ class paghome extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: Image(
                           image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
+                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
                               scale: 2.5)))
                 ],
               ),
@@ -805,7 +911,7 @@ class pagvet extends StatelessWidget {
                         child: CircleAvatar(
                             radius: 50.0,
                             backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
                     Container(
                       child: Column(
                         children: [Text("Vet 1"), Text("tel. 123456789")],
@@ -831,7 +937,7 @@ class pagvet extends StatelessWidget {
                         child: CircleAvatar(
                             radius: 50.0,
                             backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
                     Container(
                       child: Column(
                         children: [Text("Vet 1"), Text("tel. 123456789")],
@@ -857,7 +963,7 @@ class pagvet extends StatelessWidget {
                         child: CircleAvatar(
                             radius: 50.0,
                             backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
                     Container(
                       child: Column(
                         children: [Text("Vet 1"), Text("tel. 123456789")],
@@ -883,7 +989,7 @@ class pagvet extends StatelessWidget {
                         child: CircleAvatar(
                             radius: 50.0,
                             backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
                     Container(
                       child: Column(
                         children: [Text("Vet 1"), Text("tel. 123456789")],
@@ -909,7 +1015,7 @@ class pagvet extends StatelessWidget {
                         child: CircleAvatar(
                             radius: 50.0,
                             backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/34454204?v=4"))),
+                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
                     Container(
                       child: Column(
                         children: [Text("Vet 1"), Text("tel. 123456789")],
