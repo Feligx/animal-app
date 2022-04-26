@@ -123,11 +123,11 @@ class Themes{
     ),
 
     //for textField
-    inputDecorationTheme: const InputDecorationTheme(
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.indigo),
-      ),
-    ),
+    //inputDecorationTheme: const InputDecorationTheme(
+      //focusedBorder: OutlineInputBorder(
+        //borderSide: BorderSide(color: Colors.indigo),
+      //),
+    //),
 
     //for appBar
     appBarTheme: const AppBarTheme(
