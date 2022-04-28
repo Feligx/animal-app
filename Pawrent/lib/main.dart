@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:pawrent/forgot_pwd.dart';
 import 'package:pawrent/home/home1.dart';
 import 'package:pawrent/register.dart';
 import 'package:pawrent/home/home.dart';
@@ -196,7 +197,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text('¿Olvidaste tu contraseña?',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 15.0),),
-                  onPressed: (){}
+                  onPressed: (){
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => const ForgotPwd()));
+                  },
                 ),
               ),
             ),

@@ -131,9 +131,10 @@ class register extends StatelessWidget {
                             email: email,
                             password: pass
                         );
-                        debugPrint("hi!");
+                        debugPrint(userCredential.user?.uid);
                         CollectionReference users = FirebaseFirestore.instance.collection('users');
-                        users.add({'nombre': name+" "+surname, 'email':email, 'pwd':pass, 'tel':tel, 'type':accType});
+                        users.doc(userCredential.user?.uid).set({'nombre': name+" "+surname, 'email':email, 'pwd':pass, 'tel':tel, 'pfp': '' ,'type':accType});
+                        await FirebaseAuth.instance.currentUser?.updateDisplayName(name+" "+surname);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           print('The password provided is too weak.');

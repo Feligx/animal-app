@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pawrent/home/home.dart';
 import 'package:pawrent/home/profile/edit_regular.dart';
+import 'package:pawrent/home/profile/pet_profile.dart';
+
+import 'add_pet.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
+
     String uid, provider, photoUrl="", displayName = "";
 
     debugPrint(auth.currentUser?.uid);
@@ -16,8 +20,8 @@ class UserProfile extends StatelessWidget {
     provider=auth.currentUser!.providerData[0].providerId.toString();
 
     if(provider == "password"){
-      photoUrl = "https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
-      displayName = "Kirby";
+      photoUrl = auth.currentUser?.photoURL?.toString()??"https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
+      displayName = (auth.currentUser?.displayName)??"Kirby";
     }else{
       photoUrl=auth.currentUser!.photoURL!;
       displayName=auth.currentUser!.displayName!;
@@ -25,11 +29,9 @@ class UserProfile extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        //backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(
             Icons.chevron_left_outlined,
-            //color: Colors.black,
             size: 30,
           ),
           onPressed: () {
@@ -38,7 +40,6 @@ class UserProfile extends StatelessWidget {
         ),
       ),
       body: Container(
-        //color: Colors.grey[200],
         child: Column(
           children: [
             Container(
@@ -116,7 +117,12 @@ class UserProfile extends StatelessWidget {
                   margin: EdgeInsets.only(right: 20.0),
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddPet()));
+                      },
                       child: Text(
                         "Añadir mascota +",
                         style: TextStyle(color: Colors.black, fontSize: 13.0),
@@ -125,282 +131,94 @@ class UserProfile extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: ListView(
+              child: petList(),
+            ),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
+class petList extends StatefulWidget {
+  const petList({Key? key}) : super(key: key);
+
+  @override
+  State<petList> createState() => _petListState();
+}
+
+class _petListState extends State<petList> {
+  List<Widget> pets = [];
+  FirebaseAuth auth = FirebaseAuth.instance;
+  bool _query = true;
+
+  Future getPets() async{
+    final response = await FirebaseFirestore.instance.collection('pets').where('id_pawrent', isEqualTo: auth.currentUser?.uid).get().then((value) => {
+      value.docs.forEach((element) {
+        debugPrint(element.data()['name']);
+        setState(() {
+          _query = false;
+          var mediaQuery=MediaQuery.of(context);
+          pets.add(Container(
+            margin: EdgeInsets.only(left: 10.0, right: 10.0),
+            //padding: EdgeInsets.all(10.0),
+            child: Card(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                      //margin: EdgeInsets.only(left: 20.0),
                     padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      height: mediaQuery.size.height * 0.2,
+                      width: mediaQuery.size.width * 0.4,
+                      child: Image(
+                        fit: BoxFit.fill,
+                          image: NetworkImage(
+                              element.data()['pfp'],
+                              //scale: 2.5
+                          ))),
+                  Row(
+                    children: [
+                      Container(
+                      child: Column(
                         children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
+                          Text(element.data()['name']),
+                        ],
+                      ),
+                    ),
+                      Container(
+                          margin: EdgeInsets.only(right: 10.0),
+                          child: IconButton(
                             icon: Icon(
                               Icons.chevron_right_outlined,
                               color: Colors.black,
                               size: 35,
                             ),
                             onPressed: () {
-
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PetProfile(pet_id: "1")));
                             },
                           )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                    padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.chevron_right_outlined,
-                                  color: Colors.black,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                    padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.chevron_right_outlined,
-                                  color: Colors.black,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                    padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.chevron_right_outlined,
-                                  color: Colors.black,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                    padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.chevron_right_outlined,
-                                  color: Colors.black,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                    padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.chevron_right_outlined,
-                                  color: Colors.black,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                    padding: EdgeInsets.all(10.0),
-                    child: Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: Image(
-                                  image: NetworkImage(
-                                      "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fdog1.jpg?alt=media&token=34a4673e-9b2c-4fd4-a9e4-1ae31ddd5f20",
-                                      scale: 2.5))),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text("Novedades"),
-                                Text("Lorem Ipsum")
-                              ],
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.chevron_right_outlined,
-                                  color: Colors.black,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-
+                    ],
+                  )
                 ],
               ),
             ),
-          ],
-        ),
-      ),
+          ));
+        });
+      })
+    });
 
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if(_query)getPets();
+    return ListView(
+        children: pets.isNotEmpty?pets:[Center(child: CircularProgressIndicator())],
     );
   }
 }

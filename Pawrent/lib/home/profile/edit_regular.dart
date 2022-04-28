@@ -20,8 +20,17 @@ class _editRegularUserState extends State<editRegularUser> {
   UploadTask? uploadTask;
   late String? fileName;
   late String? filePath;
+  final phone_field = TextEditingController();
+  final email_field = TextEditingController();
 
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  @override
+  void dispose() {
+    phone_field.dispose();
+    email_field.dispose();
+    super.dispose();
+  }
 
   Future selectFile() async{
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -40,16 +49,12 @@ class _editRegularUserState extends State<editRegularUser> {
     } else {
       // User canceled the picker
     }
-    //final result = await FilePicker.platform.pickFiles();
-    //if (pickedFile == null) return;
 
-    //setState(() {
-      //pickedFile = result?.files.first;
-    //});
   }
 
-  Future uploadFile(filePath, fileName, uid) async{
+  Future uploadFile(filePath, fileName, email, phone) async{
     final file = File(filePath);
+    final user = FirebaseAuth.instance.currentUser;
 
     try {
       await FirebaseStorage.instance.ref(fileName).putFile(file);
@@ -60,27 +65,32 @@ class _editRegularUserState extends State<editRegularUser> {
       final downloadUrl = await snapshot.ref.getDownloadURL();
 
       print(downloadUrl);
-      print(uid);
+      print(user?.uid);
 
-      users.doc(uid).update({
-        'profileImage': downloadUrl,
+      users.doc(user?.uid).update({
+        'pfp': downloadUrl,
+      });
+
+      await user?.updateEmail(email);
+      await user?.updatePhotoURL(downloadUrl);
+
+      await FirebaseFirestore.instance.collection('users').doc(user?.uid).update({
+        'email': email,
+        'tel': phone,
       });
 
     }on FirebaseException catch(e){
       print(e.code);
       print(e.message);
     }
-
-    //final ref = FirebaseStorage.instance.ref().child(path);
-    //final ref = FirebaseStorage.instance.ref(path);
-    //await ref.putFile(file);
-
   }
 
   @override
   Widget build(BuildContext context) {
 
     FirebaseAuth auth = FirebaseAuth.instance;
+    phone_field.text = auth.currentUser!.phoneNumber??"";
+    email_field.text = auth.currentUser!.email!;
     String uid="", provider, photoUrl="", displayName = "", email = "";
 
     void getCurrentUserInfo() async {
@@ -91,8 +101,8 @@ class _editRegularUserState extends State<editRegularUser> {
       email=auth.currentUser!.email.toString();
 
       if(provider == "password"){
-        photoUrl = "https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
-        displayName = "Kirby";
+        photoUrl = auth.currentUser?.photoURL?.toString()??"https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
+        displayName = (auth.currentUser?.displayName)??"Kirby";
       }else{
         photoUrl=auth.currentUser!.photoURL!;
         displayName=auth.currentUser!.displayName!;
@@ -122,8 +132,9 @@ class _editRegularUserState extends State<editRegularUser> {
         actions: [
           IconButton(
               onPressed: (){
-                //uploadFile();
-                uploadFile(filePath, 'profile_assets/users/${fileName}', uid);
+                var email = (email_field.text=="")?auth.currentUser?.email:email_field.text;
+                var phone = (email_field.text=="")?auth.currentUser?.phoneNumber:phone_field.text;
+                uploadFile(filePath, 'profile_assets/users/${fileName}', email, phone);
           }
         , icon: Icon(Icons.save))],
       ),
@@ -181,62 +192,33 @@ class _editRegularUserState extends State<editRegularUser> {
                       fontSize: 20),
                 ),
               ),
+
               Container(
-                margin: EdgeInsets.only(top: 30),
-                width: MediaQuery.of(context).size.width,
-                child:Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width*0.45,
-                    margin: EdgeInsets.only(top: 10),
-                    child: Column(
-                      children: [
+                  margin: const EdgeInsets.only(top: 30),
+                  width: MediaQuery.of(context).size.width*0.8,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
                       Text(
                         "Email:",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.start,
                       ),
-                        TextField(
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            labelText: email,
-                            hintText: "Cambia tu email",
-                            hintStyle: TextStyle(
-                              color: Colors.grey,
-                            ),
+                      TextField(
+                        controller: email_field,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          labelText: "Email",
+                          hintText: "Cambia tu email",
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
                           ),
                         ),
-                    ]
-                    )
-                  ),
-                  Container(
-                      width: MediaQuery.of(context).size.width*0.45,
-                      margin: EdgeInsets.only(top: 10),
-                      child: Column(
-                          children: [
-                            Text(
-                              "Teléfono:",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextField(
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                labelText: "",
-                                hintText: "Cambia tu teléfono",
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ]
-                      )
-                  ),
-                ],
-              )),
+                      ),
+                    ],
+                  )),
               Container(
                   margin: const EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width*0.8,
@@ -244,17 +226,18 @@ class _editRegularUserState extends State<editRegularUser> {
                 mainAxisAlignment: MainAxisAlignment.start,
                children: [
                  Text(
-                   "Dirección:",
+                   "Teléfono:",
                    style: TextStyle(
                      fontWeight: FontWeight.bold,
                    ),
                    textAlign: TextAlign.start,
                  ),
                  TextField(
+                   controller: phone_field,
                    keyboardType: TextInputType.text,
                    decoration: InputDecoration(
-                     labelText: "Dirección",
-                     hintText: "Campo tu dirección",
+                     labelText: "Teléfono",
+                     hintText: "Cambia tu teléfono",
                      hintStyle: TextStyle(
                        color: Colors.grey,
                      ),

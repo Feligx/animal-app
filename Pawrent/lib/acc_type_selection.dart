@@ -105,7 +105,7 @@ class accType extends StatelessWidget {
                                     ),//Container
                                     Container(
                                       margin: EdgeInsets.only(top: 20.0),
-                                      child: Text("Usuario aNormal", textAlign: TextAlign.left, style: TextStyle(fontSize: 20.0),),
+                                      child: Text("Fundación", textAlign: TextAlign.left, style: TextStyle(fontSize: 20.0),),
                                     ),
                                   ]
                               )
@@ -138,7 +138,7 @@ class accType extends StatelessWidget {
                                     ),//Container
                                     Container(
                                       margin: EdgeInsets.only(top: 20.0),
-                                      child: Text("Veterinario/a", textAlign: TextAlign.left, style: TextStyle(fontSize: 20.0),),
+                                      child: Text("Veterinari@", textAlign: TextAlign.left, style: TextStyle(fontSize: 20.0),),
                                     ),
                                   ]
                               )

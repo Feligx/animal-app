@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/profile/userprofile.dart';
@@ -40,8 +41,8 @@ class _Home1State extends State<Home1> {
       provider=auth.currentUser!.providerData[0].providerId.toString();
 
       if(provider == "password"){
-        photoUrl = "https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
-        displayName = "Kirby";
+        photoUrl = auth.currentUser?.photoURL?.toString()??"https://www.nintenderos.com/wp-content/uploads/2022/03/kirby-y-la-tierra-olvidada...png1-Cropped.png";
+        displayName = (auth.currentUser?.displayName)??"Kirby";
       }else{
         photoUrl=auth.currentUser!.photoURL!;
         displayName=auth.currentUser!.displayName!;
@@ -547,13 +548,29 @@ class paghome extends StatelessWidget {
   }
 }
 
-class pagfun extends StatelessWidget {
+class pagfun extends StatefulWidget {
   const pagfun({Key? key}) : super(key: key);
+
+  @override
+  State<pagfun> createState() => _pagfunState();
+}
+
+class _pagfunState extends State<pagfun> {
+
+  Future getData() async {
+    var firestore = FirebaseFirestore.instance;
+    QuerySnapshot qn = await firestore.collection("foundations").get();
+
+    qn.docs.forEach((element) {
+      print(element.data());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
+    getData();
     return Container(
       //color: Colors.grey[200],
       child: Column(children:[
@@ -571,7 +588,7 @@ class pagfun extends StatelessWidget {
         Container(
           alignment: Alignment.centerLeft,
           margin: EdgeInsets.only(top: 10.0, left: 20.0),
-          child: Text("Fundaciones en <ins ciudad>", style: TextStyle(fontSize: 15.0),),
+          child: Text("Fundaciones en Bogotá", style: TextStyle(fontSize: 15.0),),
         ),
         const Divider(
           height: 20,
