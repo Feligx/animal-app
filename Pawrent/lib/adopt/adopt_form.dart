@@ -13,7 +13,18 @@ class _adoptFormState extends State<adoptForm> {
   Widget build(BuildContext context) {
     MediaQueryData queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
-    String selctedvalue = "USA";
+    String selctedvalue1 = "---";
+    String selctedvalue2 = "---";
+    String selctedvalue3 = "---";
+    String selctedvalue4 = "---";
+    String selctedvalue5 = "---";
+    String selctedvalue6 = "---";
+    String selctedvalue7 = "---";
+    String selctedvalue8 = "---";
+    String selctedvalue9 = "---";
+    String selctedvalue10 = "---";
+    String selctedvalue11 = "---";
+    String selctedvalue12 = "---";
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -42,7 +53,7 @@ class _adoptFormState extends State<adoptForm> {
           Container(
             margin: EdgeInsets.only(top:20.0, left: 20.0, right: 20.0),
             child: Text(
-              'Ayúdanos llenando este formulario para poder ver cuál tipo de mascota se acopla más a ti.',
+              'Ayúdanos llenando este formulario para poder ver cuál mascota se acopla más a ti.',
               style: Theme.of(context).textTheme.bodyText1,
               textAlign: TextAlign.center,
             ),
@@ -56,17 +67,19 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue1,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue1 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Qué tipo de mascota te gusta más?"), value: "---"),
+                      DropdownMenuItem(child: Text("Gatos"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Perros"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Conejillos de indias"), value: "England"),
+                      DropdownMenuItem(child: Text("Conejos"), value: "ngland"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "Egland"),
                     ]),
               ),
               Container(
@@ -75,17 +88,24 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue2,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue2 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Tienes un color de preferencia?"), value: "---"),
+                      DropdownMenuItem(child: Text("Negro"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Blanco"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Amarillo/Rubio"), value: "England"),
+                      DropdownMenuItem(child: Text("Gris"), value: "Egland"),
+                      DropdownMenuItem(child: Text("Beige"), value: "ngland"),
+                      DropdownMenuItem(child: Text("Rojo"), value: "gland"),
+                      DropdownMenuItem(child: Text("Naranja"), value: "and"),
+                      DropdownMenuItem(child: Text("Cafe"), value: "Englan"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "Engl"),
+
                     ]),
               ),
               Container(
@@ -94,17 +114,19 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue3,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue3 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Qué rango de edad prefieres?"), value: "---"),
+                      DropdownMenuItem(child: Text("Bebé"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Joven"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Adulto"), value: "Englnd"),
+                      DropdownMenuItem(child: Text("Mayor"), value: "Englad"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "Englan"),
                     ]),
               ),
               Container(
@@ -113,17 +135,17 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue4,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue4 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("Genero de preferencia"), value: "---"),
+                      DropdownMenuItem(child: Text("Macho"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Hembra"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "England"),
                     ]),
               ),
               Container(
@@ -132,17 +154,18 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue5,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue5 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("Tamaño de preferencia"), value: "---"),
+                      DropdownMenuItem(child: Text("Pequeño"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Mediano"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Grande"), value: "England"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "Canad"),
                     ]),
               ),
               Container(
@@ -151,17 +174,18 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue6,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue6 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Cual es tu preferencia en el pelaje?"), value: "---"),
+                      DropdownMenuItem(child: Text("Corto"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Medio"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Largo"), value: "England"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "Canad"),
                     ]),
               ),
               Container(
@@ -170,17 +194,17 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue7,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue7 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Vives con niños?"), value: "---"),
+                      DropdownMenuItem(child: Text("Si"), value: "Canada"),
+                      DropdownMenuItem(child: Text("No"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "England"),
                     ]),
               ),
               Container(
@@ -189,17 +213,17 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue8,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue8 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Tienes gatos?"), value: "---"),
+                      DropdownMenuItem(child: Text("Si"), value: "Canada"),
+                      DropdownMenuItem(child: Text("No"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "England"),
                     ]),
               ),
               Container(
@@ -208,17 +232,17 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue9,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue9 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Tienes perros?"), value: "---"),
+                      DropdownMenuItem(child: Text("Si"), value: "Canada"),
+                      DropdownMenuItem(child: Text("No"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "England"),
                     ]),
               ),
               Container(
@@ -227,17 +251,17 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue10,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue10 = newValue!;
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Prefieres que este esterilizado?"), value: "---"),
+                      DropdownMenuItem(child: Text("Si"), value: "Canada"),
+                      DropdownMenuItem(child: Text("No"), value: "Brazil"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "England"),
                     ]),
               ),
               Container(
@@ -246,17 +270,17 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue11,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue11 = newValue!;
                       });
                     },
                     items: const [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("¿Prefieres que este vacunado?"), value: "---"),
+                      DropdownMenuItem(child: Text("Si"), value: "Canada"),
+                      DropdownMenuItem(child: Text("No"), value: "Brazi"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "Englan"),
                     ]),
               ),
               Container(
@@ -265,76 +289,20 @@ class _adoptFormState extends State<adoptForm> {
                     decoration: const InputDecoration(border: OutlineInputBorder()),
                     validator: (value) => value == null ? "Select a country" : null,
                     dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
+                    value: selctedvalue12,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selctedvalue = newValue!;
+                        selctedvalue12 = newValue!;
                       });
                     },
                     items: const [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
+                      DropdownMenuItem(child: Text("Me gustaria que fuera "), value: "---"),
+                      DropdownMenuItem(child: Text("Canada"), value: "Canda"),
                       DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
+                      DropdownMenuItem(child: Text("England"), value: "Engld"),
                     ]),
               ),
-              Container(
-                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
-                child: DropdownButtonFormField(
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    validator: (value) => value == null ? "Select a country" : null,
-                    dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selctedvalue = newValue!;
-                      });
-                    },
-                    items: const [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
-                    ]),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
-                child: DropdownButtonFormField(
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    validator: (value) => value == null ? "Select a country" : null,
-                    dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selctedvalue = newValue!;
-                      });
-                    },
-                    items: const [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
-                    ]),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top:20.0, left:20.0, right:20.0),
-                child: DropdownButtonFormField(
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    validator: (value) => value == null ? "Select a country" : null,
-                    dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selctedvalue = newValue!;
-                      });
-                    },
-                    items: const [
-                      DropdownMenuItem(child: Text("USA"), value: "USA"),
-                      DropdownMenuItem(child: Text("Canada"), value: "Canada"),
-                      DropdownMenuItem(child: Text("Brazil"), value: "Brazil"),
-                      DropdownMenuItem(child: Text("England"), value: "England"),
-                    ]),
-              ),
+
               Container(
                 margin: const EdgeInsets.all(20.0),
                   child: ElevatedButton(
@@ -358,3 +326,4 @@ class _adoptFormState extends State<adoptForm> {
     ));
   }
 }
+
