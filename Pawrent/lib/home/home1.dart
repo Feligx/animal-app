@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pawrent/home/profile/userprofile.dart';
 import 'package:pawrent/adopt/adopt.dart';
 import 'package:pawrent/settings/settings.dart';
+import 'package:pawrent/home/foundations/foundations_detailed.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -557,20 +558,61 @@ class pagfun extends StatefulWidget {
 
 class _pagfunState extends State<pagfun> {
 
-  Future getData() async {
-    var firestore = FirebaseFirestore.instance;
-    QuerySnapshot qn = await firestore.collection("foundations").get();
+  bool _queried = false;
+  List<Widget> foundations = [];
 
-    qn.docs.forEach((element) {
-      print(element.data());
-    });
+  Future getData() async {
+    if (!_queried) {
+      foundations= [];
+      var firestore = FirebaseFirestore.instance;
+      await firestore.collection("foundations").get().then((value){
+        value.docs.forEach((element) {
+          print(element.id);
+          foundations.add(
+            InkWell(
+              child: Container(
+                margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                padding: EdgeInsets.all(10.0),
+                child: Card(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        //margin: EdgeInsets.only(right: 100.0),
+                        child: Column(
+                          children: [Text(element.data()["name"],), Text(element.data()["address"],)],
+                        ),
+                      ),
+                      Container(
+                          padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                          child: Image(
+                              image: NetworkImage(
+                                  element.data()["pfp"],
+                                  scale: 2.5)))
+                    ],
+                  ),
+                ),
+              ),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => foundDetailed(id: element.id,)));
+                }
+            ),
+          );
+        });
+        setState(() {
+          _queried = true;
+        });
+      });
+    }
+    print(foundations);
   }
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
-    getData();
+    if(!_queried)getData();
+    debugPrint(_queried.toString());
     return Container(
       //color: Colors.grey[200],
       child: Column(children:[
@@ -597,291 +639,49 @@ class _pagfunState extends State<pagfun> {
           color: Colors.black,
         ),
         Expanded(
-          child: ListView(children: [
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("News"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedade"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://avatars.githubusercontent.com/u/34454204?v=4",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-
-        ],
+          child: ListView(
+            children: foundations.isEmpty?[Container(child: Center(child: CircularProgressIndicator()))]:foundations,
       ),
         )]
       )
     );
   }
 }
+
+class loadingCircle extends StatefulWidget {
+  const loadingCircle({Key? key}) : super(key: key);
+
+  @override
+  State<loadingCircle> createState() => _loadingCircleState();
+}
+
+class _loadingCircleState extends State<loadingCircle> {
+
+  bool _isLoading = true;
+
+  final loader = Container(
+      child: Center(
+        child: CircularProgressIndicator(),
+      ));
+  final empty = Container(
+      child: Center(
+        child: Text("No hay nada"),
+      ));
+
+  Future loadingWaiter() async{
+    await Future.delayed(Duration(seconds: 5));
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    loadingWaiter();
+    return _isLoading?loader:empty;
+  }
+}
+
 
 class pagvet extends StatelessWidget {
   const pagvet({Key? key}) : super(key: key);

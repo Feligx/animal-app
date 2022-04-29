@@ -3,6 +3,8 @@
    <application
         android:label="Pawrent"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.API_KEY"
+       android:value="AIzaSyC2ThQkoOr95OVcuO5P1nEyrzhM-K_5CVU"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
