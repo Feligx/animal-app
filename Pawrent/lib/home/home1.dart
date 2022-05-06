@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pawrent/home/profile/userprofile.dart';
 import 'package:pawrent/adopt/adopt.dart';
+import 'package:pawrent/home/veterinaries/vet_detailed.dart';
 import 'package:pawrent/settings/settings.dart';
 import 'package:pawrent/home/foundations/foundations_detailed.dart';
 
@@ -707,7 +708,7 @@ class pagvet extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(top: 10.0, left: 20.0),
-            child: Text("Veterinarios en <ins ciudad>", style: TextStyle(fontSize: 15.0),),
+            child: Text("Veterinarios en Bogotá", style: TextStyle(fontSize: 15.0),),
           ),
           const Divider(
             height: 20,
@@ -737,6 +738,7 @@ class pagvet extends StatelessWidget {
                     IconButton(
                         icon: Icon(Icons.chevron_right_outlined),
                         onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => vetProfile()));
                           print("hola");
                         },
                     )
@@ -764,6 +766,7 @@ class pagvet extends StatelessWidget {
                       icon: Icon(Icons.chevron_right_outlined),
                       onPressed: () {
                         print("hola");
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => vetProfile()));
                       },
                     )
                   ],
@@ -854,5 +857,3 @@ class pagvet extends StatelessWidget {
     );
   }
 }
-
-

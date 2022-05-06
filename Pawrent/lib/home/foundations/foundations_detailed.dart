@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'foundation_map.dart';
 
 class foundDetailed extends StatefulWidget {
   const foundDetailed({Key? key, required this.id}) : super(key: key);
@@ -13,6 +16,14 @@ class _foundDetailedState extends State<foundDetailed> {
 
   var foundationName="", foundationAddress="", foundationPhone="", foundationImage="";
   bool queried = false;
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
 
   Future getFoundation() async{
     if(!queried){
@@ -69,23 +80,35 @@ class _foundDetailedState extends State<foundDetailed> {
               margin: EdgeInsets.only(top: 20, bottom: 20, left: 20),
               child: Text("Ubicación", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
             ),
-            Card(
-              margin: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 20, top: 20, bottom: 20),
-                    child: Icon(Icons.location_on, color: Colors.orange,),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Ver ubicación",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            InkWell(
+              child: Card(
+                margin: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 20, top: 20, bottom: 20),
+                          child: Icon(Icons.location_on, color: Colors.orange,),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 20),
+                          child: Text(
+                            "Ver ubicación",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapSample(ubication: LatLng(4.6000788, -74.1433306), type: "foundation",)),
+                );
+              },
             )
           ],
         ),
