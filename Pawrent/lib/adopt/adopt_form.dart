@@ -9,23 +9,22 @@ class adoptForm extends StatefulWidget {
 }
 
 class _adoptFormState extends State<adoptForm> {
+  dynamic selctedvalue1 = 0;
+  dynamic selctedvalue3 = 0;
+  dynamic selctedvalue4 = 0;
+  dynamic selctedvalue5 = 0;
+  dynamic selctedvalue6 = 0;
+  dynamic selctedvalue7 = 0;
+  dynamic selctedvalue8 = 0;
+  dynamic selctedvalue9 = 0;
+  dynamic selctedvalue10 = 0;
+  dynamic selctedvalue11 = 0;
+  dynamic selctedvalue12 = 0;
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
-    dynamic selctedvalue1 = 0;
-    dynamic selctedvalue2 = 0;
-    dynamic selctedvalue3 = 0;
-    dynamic selctedvalue4 = 0;
-    dynamic selctedvalue5 = 0;
-    dynamic selctedvalue6 = 0;
-    dynamic selctedvalue7 = 0;
-    dynamic selctedvalue8 = 0;
-    dynamic selctedvalue9 = 0;
-    dynamic selctedvalue10 = 0;
-    dynamic selctedvalue11 = 0;
-    dynamic selctedvalue12 = 0;
-
 
     return Scaffold(
       appBar: AppBar(
@@ -77,37 +76,11 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Qué tipo de mascota te gusta más?"), value: 0),
-                      DropdownMenuItem(child: Text("Gatos"), value: 1),
-                      DropdownMenuItem(child: Text("Perros"), value: 2),
-                      DropdownMenuItem(child: Text("Conejillos de indias"), value: 3),
-                      DropdownMenuItem(child: Text("Conejos"), value: 4),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 5),
-                    ]),
-              ),
-              Container(
-                margin: EdgeInsets.only(top:20.0, left:20.0, right:20.0),
-                child: DropdownButtonFormField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                    validator: (value) => value == null ? "Select a country" : null,
-                    dropdownColor: (isDark) ? Colors.black : null,
-                    value: selctedvalue2,
-                    onChanged: (dynamic? newValue) {
-                      setState(() {
-                        selctedvalue2 = newValue!;
-                      });
-                    },
-                    items: [
-                      DropdownMenuItem(child: Text("¿Tienes un color de preferencia?"), value: 0),
-                      DropdownMenuItem(child: Text("Negro"), value: 1),
-                      DropdownMenuItem(child: Text("Blanco"), value: 2),
-                      DropdownMenuItem(child: Text("Amarillo/Rubio"), value: 3),
-                      DropdownMenuItem(child: Text("Gris"), value: 4),
-                      DropdownMenuItem(child: Text("Beige"), value: 5),
-                      DropdownMenuItem(child: Text("Rojo"), value: 6),
-                      DropdownMenuItem(child: Text("Naranja"), value: 7),
-                      DropdownMenuItem(child: Text("Cafe"), value: 8),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 9),
-
+                      DropdownMenuItem(child: Text("Gatos"), value: "Cat"),
+                      DropdownMenuItem(child: Text("Perros"), value: "Dog"),
+                      DropdownMenuItem(child: Text("Conejillos de indias"), value: "Guinea Pig"),
+                      DropdownMenuItem(child: Text("Conejos"), value: "Rabbit"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -124,11 +97,11 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Qué rango de edad prefieres?"), value: 0),
-                      DropdownMenuItem(child: Text("Bebé"), value: 1),
-                      DropdownMenuItem(child: Text("Joven"), value: 2),
-                      DropdownMenuItem(child: Text("Adulto"), value: 3),
-                      DropdownMenuItem(child: Text("Mayor"), value: 4),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 5),
+                      DropdownMenuItem(child: Text("Bebé"), value: "Baby"),
+                      DropdownMenuItem(child: Text("Joven"), value: "Young"),
+                      DropdownMenuItem(child: Text("Adulto"), value: "Adult"),
+                      DropdownMenuItem(child: Text("Mayor"), value: "Senior"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -144,10 +117,10 @@ class _adoptFormState extends State<adoptForm> {
                       });
                     },
                     items: [
-                      DropdownMenuItem(child: Text("Genero de preferencia"), value: 0),
-                      DropdownMenuItem(child: Text("Macho"), value: 1),
-                      DropdownMenuItem(child: Text("Hembra"), value: 2),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 3),
+                      DropdownMenuItem(child: Text("Género de preferencia"), value: 0),
+                      DropdownMenuItem(child: Text("Macho"), value: "Male"),
+                      DropdownMenuItem(child: Text("Hembra"), value: "Female"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -164,10 +137,11 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("Tamaño de preferencia"), value: 0),
-                      DropdownMenuItem(child: Text("Pequeño"), value: 1),
-                      DropdownMenuItem(child: Text("Mediano"), value: 2),
-                      DropdownMenuItem(child: Text("Grande"), value: 3),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 4),
+                      DropdownMenuItem(child: Text("Pequeño"), value: "Small"),
+                      DropdownMenuItem(child: Text("Mediano"), value: "Medium"),
+                      DropdownMenuItem(child: Text("Grande"), value: "Large"),
+                      DropdownMenuItem(child: Text("Muy Grande"), value: "Extra Large"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -184,10 +158,10 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Cual es tu preferencia en el pelaje?"), value: 0),
-                      DropdownMenuItem(child: Text("Corto"), value: 1),
-                      DropdownMenuItem(child: Text("Medio"), value: 2),
-                      DropdownMenuItem(child: Text("Largo"), value: 3),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 4),
+                      DropdownMenuItem(child: Text("Corto"), value: "Short"),
+                      DropdownMenuItem(child: Text("Medio"), value: "Medium"),
+                      DropdownMenuItem(child: Text("Largo"), value: "Long"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -204,9 +178,9 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Vives con niños?"), value: 0),
-                      DropdownMenuItem(child: Text("Si"), value: 1),
-                      DropdownMenuItem(child: Text("No"), value: 2),
-                      DropdownMenuItem(child: Text("Sapo"), value: 3),
+                      DropdownMenuItem(child: Text("Si"), value: "true"),
+                      DropdownMenuItem(child: Text("No"), value: "false"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "all"),
                     ]),
               ),
               Container(
@@ -223,9 +197,9 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Tienes gatos?"), value: 0),
-                      DropdownMenuItem(child: Text("Si"), value: 1),
-                      DropdownMenuItem(child: Text("No"), value: 2),
-                      DropdownMenuItem(child: Text("Sapo"), value: 3),
+                      DropdownMenuItem(child: Text("Si"), value: "true"),
+                      DropdownMenuItem(child: Text("No"), value: "false"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "all"),
                     ]),
               ),
               Container(
@@ -242,9 +216,9 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Tienes perros?"), value: 0),
-                      DropdownMenuItem(child: Text("Si"), value: 1),
-                      DropdownMenuItem(child: Text("No"), value: 2),
-                      DropdownMenuItem(child: Text("Sapo"), value: 3),
+                      DropdownMenuItem(child: Text("Si"), value: "true"),
+                      DropdownMenuItem(child: Text("No"), value: "false"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "all"),
                     ]),
               ),
               Container(
@@ -261,9 +235,9 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: [
                       DropdownMenuItem(child: Text("¿Prefieres que este esterilizado?"), value: 0),
-                      DropdownMenuItem(child: Text("Si"), value: 1),
-                      DropdownMenuItem(child: Text("No"), value: 2),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 3),
+                      DropdownMenuItem(child: Text("Si"), value: "true"),
+                      DropdownMenuItem(child: Text("No"), value: "false"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -280,9 +254,9 @@ class _adoptFormState extends State<adoptForm> {
                     },
                     items: const [
                       DropdownMenuItem(child: Text("¿Prefieres que este vacunado?"), value: 0),
-                      DropdownMenuItem(child: Text("Si"), value: 1),
-                      DropdownMenuItem(child: Text("No"), value: 2),
-                      DropdownMenuItem(child: Text("Indiferente"), value: 3),
+                      DropdownMenuItem(child: Text("Si"), value: "true"),
+                      DropdownMenuItem(child: Text("No"), value: "false"),
+                      DropdownMenuItem(child: Text("Indiferente"), value: "all"),
                     ]),
               ),
               Container(
@@ -294,14 +268,16 @@ class _adoptFormState extends State<adoptForm> {
                     value: selctedvalue12,
                     onChanged: (dynamic? newValue) {
                       setState(() {
+                        print("Before:"+ selctedvalue12.toString());
                         selctedvalue12 = newValue!;
+                        print(selctedvalue12);
                       });
                     },
                     items: const [
-                      DropdownMenuItem(child: Text("Me gustaria que fuera "), value: 0),
-                      DropdownMenuItem(child: Text("Canada"), value: 1),
-                      DropdownMenuItem(child: Text("Brazil"), value: 2),
-                      DropdownMenuItem(child: Text("England"), value: 3),
+                      DropdownMenuItem(child: Text("Me gustaria entrenado en casa: "), value: 0),
+                      DropdownMenuItem(child: Text("Sí"), value: "true"),
+                      DropdownMenuItem(child: Text("No"), value: "false"),
+                      DropdownMenuItem(child: Text("Sapo"), value: "all"),
                     ]),
               ),
 
@@ -312,11 +288,49 @@ class _adoptFormState extends State<adoptForm> {
                         minimumSize: Size(queryData.size.width, 60.0),
                         ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => adpotMatch()),
-                    );
-                  },
+                    var variables = [selctedvalue1, selctedvalue3, selctedvalue4, selctedvalue5, selctedvalue6, selctedvalue7, selctedvalue8, selctedvalue9, selctedvalue10, selctedvalue11, selctedvalue12];
+                    if (!variables.contains(0)) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => adpotMatch(
+                          filter: {
+                            "species": selctedvalue1,
+                            "age": selctedvalue3,
+                            "gender": selctedvalue4,
+                            "size": selctedvalue5,
+                            "coat": selctedvalue6,
+                            "attributes": {
+                              "sterilized": selctedvalue10,
+                              "house_trained": selctedvalue12,
+                              "shots_current": selctedvalue11,
+                            },
+                            "environment": {
+                              "children": selctedvalue7,
+                              "dogs": selctedvalue9,
+                              "cats": selctedvalue8,
+                            },
+                          },
+                        )),
+                      );
+                    }else {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Formulario Incompleto"),
+                            content: Text("Responda todas las preguntas"),
+                            actions: [
+                              ElevatedButton(
+                                child: Text("Ok"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },),
+                            ],
+                        );
+                        },
+                      );
+                      }
+                    },
                   child: const Text('Continuar'),
                 ),
               )

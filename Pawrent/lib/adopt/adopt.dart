@@ -31,19 +31,19 @@ class pagadopt extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => adpotMatch()),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: queryData.size.width*0.3,
-                      child: const Text('Adoptar')
-                  )
-              ),
+              //ElevatedButton(
+                  //onPressed: (){
+                    //Navigator.push(
+                      //context,
+                      //MaterialPageRoute(builder: (context) => adpotMatch()),
+                    //);
+                  //},
+                  //child: Container(
+                    //alignment: Alignment.center,
+                    //width: queryData.size.width*0.3,
+                      //child: const Text('Adoptar')
+                  //)
+              //),
               OutlinedButton(
                   onPressed: (){
                     Navigator.push(

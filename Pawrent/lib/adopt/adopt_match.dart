@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pawrent/home/home1.dart';
 
 class adpotMatch extends StatefulWidget {
-  const adpotMatch({Key? key}) : super(key: key);
+  const adpotMatch({Key? key, required this.filter}) : super(key: key);
+  final filter;
 
   @override
   State<adpotMatch> createState() => _adpotMatchState();
@@ -11,6 +12,7 @@ class adpotMatch extends StatefulWidget {
 class _adpotMatchState extends State<adpotMatch> {
   @override
   Widget build(BuildContext context) {
+    print(widget.filter);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Las mascotas perfectas para ti"),
