@@ -247,24 +247,29 @@ class paghome extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 10.0, right: 10.0),
             padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades", style: TextStyle(color: Colors.black)), Text("Lorem Ipsum")],
+            child: InkWell(
+              child: Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      //margin: EdgeInsets.only(right: 100.0),
+                      child: Column(
+                        children: [Text("Novedades", style: TextStyle(color: Colors.black)), Text("Lorem Ipsum")],
+                      ),
                     ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
+                    Container(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Image(
+                            image: NetworkImage(
+                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
+                                scale: 2.5)))
+                  ],
+                ),
               ),
+              onTap: () {
+
+              },
             ),
           ),
           Container(
