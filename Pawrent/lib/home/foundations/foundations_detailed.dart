@@ -106,7 +106,7 @@ class _foundDetailedState extends State<foundDetailed> {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapSample(ubication: LatLng(4.6000788, -74.1433306), type: "foundation",)),
+                  MaterialPageRoute(builder: (context) => MapSample(ubication: LatLng(4.6000788, -74.1433306), type: "Fundación")),
                 );
               },
             )

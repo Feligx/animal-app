@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pawrent/home/posts/Post_fund.dart';
 import 'package:pawrent/home/profile/userprofile.dart';
 import 'package:pawrent/adopt/adopt.dart';
 import 'package:pawrent/home/veterinaries/vet_detailed.dart';
 import 'package:pawrent/settings/settings.dart';
 import 'package:pawrent/home/foundations/foundations_detailed.dart';
+
+import '../reports/reportes.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -80,11 +83,10 @@ class _Home1State extends State<Home1> {
               margin: EdgeInsets.only(right: 10.0),
               child: IconButton(
                   onPressed: () {
-                    debugPrint(auth.currentUser?.uid);
-                    debugPrint(auth.currentUser?.photoURL);
-                    debugPrint(auth.currentUser?.displayName);
-                    debugPrint(auth.currentUser?.providerData[0].toString());
-                    debugPrint(auth.currentUser?.providerData[0].providerId.toString());
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => reportsForm()),
+                    );
                   },
                   icon: Icon(
                     Icons.report_problem_outlined,
@@ -245,7 +247,7 @@ class paghome extends StatelessWidget {
           ),
 
           Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
+            margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 40),
             padding: EdgeInsets.all(10.0),
             child: InkWell(
               child: Card(
@@ -255,7 +257,7 @@ class paghome extends StatelessWidget {
                     Container(
                       //margin: EdgeInsets.only(right: 100.0),
                       child: Column(
-                        children: [Text("Novedades", style: TextStyle(color: Colors.black)), Text("Lorem Ipsum")],
+                        children: [Text("Novedades", style: TextStyle(color: Colors.black))],
                       ),
                     ),
                     Container(
@@ -268,287 +270,10 @@ class paghome extends StatelessWidget {
                 ),
               ),
               onTap: () {
-
+                Navigator.push(context, MaterialPageRoute(builder: (context) => pagnov()),);
               },
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    //margin: EdgeInsets.only(right: 100.0),
-                    child: Column(
-                      children: [Text("Novedades"), Text("Lorem Ipsum")],
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      child: Image(
-                          image: NetworkImage(
-                              "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fpets%2Fcat1.jpg?alt=media&token=13e2e16a-6487-4859-ad18-5ee429ed5f7a",
-                              scale: 2.5)))
-                ],
-              ),
-            ),
-          ),
-
         ],
       ),
     );
@@ -584,9 +309,10 @@ class _pagfunState extends State<pagfun> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
+                        width:100,
                         //margin: EdgeInsets.only(right: 100.0),
                         child: Column(
-                          children: [Text(element.data()["name"],), Text(element.data()["address"],)],
+                          children: [Text(element.data()["name"], overflow: TextOverflow.fade,)],
                         ),
                       ),
                       Container(
@@ -689,13 +415,43 @@ class _loadingCircleState extends State<loadingCircle> {
 }
 
 
-class pagvet extends StatelessWidget {
+class pagvet extends StatefulWidget {
   const pagvet({Key? key}) : super(key: key);
+
+  @override
+  State<pagvet> createState() => _pagvetState();
+}
+
+class _pagvetState extends State<pagvet> {
+
+  var Data = [];
+  var _isQueried = false;
+
+  Future getVets() async {
+    print("Querying...");
+    Data = [];
+    FirebaseFirestore.instance
+        .collection('vets')
+        .get().then((value) =>
+    {
+      setState((){
+        value.docs.forEach((doc) {
+          print(doc.data());
+          Data.add(doc.data());
+        });
+        print("Data");
+        print(Data);
+      })
+    });
+    _isQueried=true;
+  }
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData = MediaQuery.of(context);
     bool isDark = queryData.platformBrightness == Brightness.dark;
+
+    if(!_isQueried)getVets();
     return Container(
         //color: Colors.grey[200],
         child: Column(children:[
@@ -722,141 +478,39 @@ class pagvet extends StatelessWidget {
             color: Colors.black,
           ),
           Expanded(
-            child: ListView(children: [
-              Container(
-                margin: EdgeInsets.only(left: 20.0, right: 20.0),
+            child: ListView.builder(
+                itemCount: Data.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.only(left: 20.0, right: 20.0),
 //                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage: NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
-                    Container(
-                      child: Column(
-                        children: [Text("Vet 1"), Text("tel. 123456789")],
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                            child: CircleAvatar(
+                                radius: 50.0,
+                                backgroundImage: NetworkImage(
+                                    Data[index]['pfp']))),
+                        Container(
+                          width: 150,
+                          child: Column(
+                            children: [Text(Data[index]['name'], textAlign: TextAlign.center,), Text(Data[index]['tel'].toString())],
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.chevron_right_outlined),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => vetProfile(name: Data[index]['name'],address: Data[index]['address'], pfp: Data[index]['pfp'], tel: Data[index]['tel'],)));
+                            print("hola");
+                          },
+                        )
+                      ],
                     ),
-                    IconButton(
-                        icon: Icon(Icons.chevron_right_outlined),
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => vetProfile()));
-                          print("hola");
-                        },
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20.0, right: 20.0),
-//                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage: NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
-                    Container(
-                      child: Column(
-                        children: [Text("Vet 1"), Text("tel. 123456789")],
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.chevron_right_outlined),
-                      onPressed: () {
-                        print("hola");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => vetProfile()));
-                      },
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20.0, right: 20.0),
-//                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage: NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
-                    Container(
-                      child: Column(
-                        children: [Text("Vet 1"), Text("tel. 123456789")],
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.chevron_right_outlined),
-                      onPressed: () {
-                        print("hola");
-                      },
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20.0, right: 20.0),
-//                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage: NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
-                    Container(
-                      child: Column(
-                        children: [Text("Vet 1"), Text("tel. 123456789")],
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.chevron_right_outlined),
-                      onPressed: () {
-                        print("hola");
-                      },
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20.0, right: 20.0),
-//                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: CircleAvatar(
-                            radius: 50.0,
-                            backgroundImage: NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/pawpaw-9d57b.appspot.com/o/profile_assets%2Fvets%2Fvet1.jpg?alt=media&token=5a4a461e-c863-4ce7-a359-ccd7c27481a2"))),
-                    Container(
-                      child: Column(
-                        children: [Text("Vet 1"), Text("tel. 123456789")],
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.chevron_right_outlined),
-                      onPressed: () {
-                        print("hola");
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ],
-            ),
+                  );
+                }
+            )
           )]
         )
     );

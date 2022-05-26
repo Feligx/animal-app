@@ -5,6 +5,7 @@ import 'package:pawrent/forgot_pwd.dart';
 import 'package:pawrent/home/home1.dart';
 import 'package:pawrent/register.dart';
 import 'package:pawrent/home/home.dart';
+import 'package:pawrent/reports/reportes.dart';
 import 'package:pawrent/themes/themes.dart';
 
 import 'acc_type_selection.dart';
@@ -162,28 +163,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Image.asset('assets/icons/google.png', height: 30,)
           ),
-          OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.all(10.0),
-                  shape: CircleBorder()
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home1()));
-              },
-              child: Image.asset('assets/icons/apple.png', height: 30,)
-          ),
-          OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.all(10.0),
-                  shape: CircleBorder()
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home1()));
-              },
-              child: Image.asset('assets/icons/facebook.png', height: 30,)
-          ),
         ]),
         ),
         Container(
@@ -223,9 +202,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print(queryData.size.width);
-          print(queryData.size.width - 40);
-          print((queryData.size.width - 40) / 30);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => reportsForm()));
         },
         child: const Icon(
           Icons.report_problem_outlined,

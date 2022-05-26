@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pawrent/settings/deviceSync.dart';
 import 'package:pawrent/themes/themes.dart';
 
-class settingList extends StatelessWidget {
-  const settingList({Key? key}) : super(key: key);
+
+class tuCuenta extends StatelessWidget {
+  const tuCuenta({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +14,7 @@ class settingList extends StatelessWidget {
       body: ListView(
         children: [
           InkWell(
-            onTap: (){
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const deviceSync()));
-            },
+            onTap: (){},
             child: Container(
             margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
             padding: EdgeInsets.only(left: queryData.size.width*0.05, right: queryData.size.width*0.05),
@@ -37,12 +33,12 @@ class settingList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                      child: Text("Configura tus dispositivos", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      child: Text("Tu cuenta", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                     width: queryData.size.width,
                   ),
                   Container(
                       child: Text(
-                    "Consulta y modifica las configuraciones de tus dispositivos emparejados.",
+                    "Consulta y modifica tu información personal conectada a tu cuenta",
                     textAlign: TextAlign.left,
                   ))
                 ],
@@ -69,44 +65,12 @@ class settingList extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              child: Text("Tu Cuenta", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                              width: queryData.size.width,
-                            ),
-                            Container(
-                                child: Text(
-                                  "Consulta y modifica tu información personal conectada a tu cuenta",
-                                  textAlign: TextAlign.left,
-                                ))
-                          ],
-                        ))
-                  ],
-                )),),
-          InkWell(
-            onTap: (){},
-            child: Container(
-                margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                padding: EdgeInsets.only(left: queryData.size.width*0.05, right: queryData.size.width*0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        margin: EdgeInsets.only(right: 20.0),
-                        child:
-                        Icon(
-                          Icons.devices_other_outlined,
-                          size: 40.0,
-                        )),
-                    Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
                               child: Text("Seguridad y Privacidad", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                               width: queryData.size.width,
                             ),
                             Container(
                                 child: Text(
-                                  "Consulta y modifica las configuraciones de seguridad de privacidad.",
+                                  "Consulta y modifica las configuraciones de seguridad de tu cuenta.",
                                   textAlign: TextAlign.left,
                                 ))
                           ],
@@ -146,7 +110,8 @@ class settingList extends StatelessWidget {
                   ],
                 )),),
           InkWell(
-            onTap: (){},
+            onTap: (){
+            },
             child: Container(
                 margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 padding: EdgeInsets.only(left: queryData.size.width*0.05, right: queryData.size.width*0.05),
@@ -178,7 +143,8 @@ class settingList extends StatelessWidget {
                   ],
                 )),),
           InkWell(
-            onTap: (){},
+            onTap: (){
+            },
             child: Container(
                 margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 padding: EdgeInsets.only(left: queryData.size.width*0.05, right: queryData.size.width*0.05),
@@ -202,7 +168,7 @@ class settingList extends StatelessWidget {
                             ),
                             Container(
                                 child: Text(
-                                  "Encuentra recursos de adicionales sobre la aplicacion",
+                                  "Modifica las configuraciones de accesibilidad.",
                                   textAlign: TextAlign.left,
                                 ))
                           ],
@@ -210,9 +176,7 @@ class settingList extends StatelessWidget {
                   ],
                 )),),
           InkWell(
-            onTap: () async{
-              final GoogleSignInAccount? googleUser = await GoogleSignIn().signOut();
-              await FirebaseAuth.instance.signOut();
+            onTap: () {
             },
             child: Container(
                 margin: EdgeInsets.only(top: 20.0, bottom: 20.0),

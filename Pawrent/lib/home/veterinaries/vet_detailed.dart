@@ -2,8 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../foundations/foundation_map.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class vetProfile extends StatelessWidget {
+
+  const vetProfile({Key? key, required this.name, required this.address, required this.tel, required this.pfp}) : super(key: key);
+
+  final String name;
+  final String address;
+  final int tel;
+  final String pfp;
+
+  void _launchUrl() async {
+    final Uri _url = Uri.parse('https://wa.me/57'+tel.toString());
+    if (!await launchUrl(_url)) throw 'Could not launch $_url';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +35,7 @@ class vetProfile extends StatelessWidget {
         ),
       ),
       body: Container(
-        child: Column(
+        child: ListView(
           children: [
             //Foto de perfil y datos
             Container(
@@ -31,7 +45,7 @@ class vetProfile extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.brown.shade800,
-                    child: const Text('AH'),
+                    child: Text(name[0]),
                     radius: 70.0,
                   ),
                   Container(
@@ -39,24 +53,28 @@ class vetProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
+                          width: 120,
                           margin: EdgeInsets.only(bottom: 15),
                           child: Text(
-                            "Elver Galarga",
+                            name,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.orange,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20),
                           ),
                         ),
-                        Text(
-                          "Cr 23A # 24C - 65, Mordor",
-                        ),
-                        Text(
-                          "Tel: Preguntale a tu mama",
-                        ),
-                        Text(
-                          "www.malwaregratis.com",
-                        ),
+                        Container(
+                          margin: EdgeInsets.only(bottom:10),
+                          width: 120,
+                          child: Text(
+                          address,
+                          textAlign: TextAlign.center,
+                        ),),
+                        Container(child: Text(
+                          tel.toString(),
+                          textAlign: TextAlign.center,
+                        ),)
                       ],
                     ),
                   ),
@@ -102,12 +120,15 @@ class vetProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          child: Text(
-                            "Chat Directo",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
+                          child: TextButton(
+                            child: Text("Chat Directo",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),),
+                            onPressed: () {
+                              _launchUrl();
+                            }
                           ),
                         ),
                       ],
